@@ -36,7 +36,7 @@ public class TelecomPaymentCalculate {
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(2014, Calendar.NOVEMBER, 18);
+        calendar.set(2014, Calendar.NOVEMBER, 12);
         String fromDate = String.valueOf(calendar.getTimeInMillis());
         calendar.set(2014, Calendar.NOVEMBER, 20);
         String toDate = String.valueOf(calendar.getTimeInMillis());
@@ -54,7 +54,7 @@ public class TelecomPaymentCalculate {
         
         while (c.moveToNext()) {
           //Log.d("abcd","numberType=" + c.getInt(c.getColumnIndex(CallLog.Calls.TYPE)));
-if (c.getInt(c.getColumnIndex(CallLog.Calls.TYPE))==2){
+if (c.getInt(c.getColumnIndex(CallLog.Calls.TYPE))==CallLog.Calls.OUTGOING_TYPE){
     
                 String number = c.getString(c.getColumnIndex(CallLog.Calls.NUMBER));
                 int duration = c.getInt(c.getColumnIndex(CallLog.Calls.DURATION));
