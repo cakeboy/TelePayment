@@ -16,7 +16,7 @@
 
 package com.android.benedict.rookie;
 
-import com.example.android.effectivenavigation.R;
+import com.android.benedict.rookie.R;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -172,7 +172,7 @@ public class MyTelecomInfoActivity extends FragmentActivity implements ActionBar
                     return CallLogCursorLoaderFragment.newInstance(CallLog.Calls.MISSED_TYPE);
 
                 default:
-                    return new TelecomInfoFragment();
+                    return null;
             }
 
         }

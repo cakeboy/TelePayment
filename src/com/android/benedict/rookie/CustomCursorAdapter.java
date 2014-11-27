@@ -3,7 +3,7 @@ package com.android.benedict.rookie;
 
 import java.text.SimpleDateFormat;
 
-import com.example.android.effectivenavigation.R;
+import com.android.benedict.rookie.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <fee_project name="CHT_636" corporation = "CHTtelecom"  Payment = "4G 636" Intranetwork = "10" Extranework = "35"  localcall = "35"/>
+    <fee_project name="CHT_636" corporation = "CHTtelecom"  Payment = "4G 636" Intrafree = "10" Extranework = "10"  localcall = "10"/>
     <fee_project name="CHT_936" corporation = "CHTtelecom"  Payment = "4G 936" Intranetwork = "60" Extranework = "35"  localcall = "35"/>
     <fee_project name="TWM_636" corporation = "TWMtelecom"  Payment = "4G 636" Intranetwork = "60" Extranework = "35"  localcall = "35"/>
     <fee_project name="TWM_936" corporation = "TWMtelecom"  Payment = "4G 936" Intranetwork = "60" Extranework = "35"  localcall = "35"/>

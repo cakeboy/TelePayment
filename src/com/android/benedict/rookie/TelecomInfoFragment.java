@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.example.android.effectivenavigation.R;
-
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,6 +26,7 @@ public class TelecomInfoFragment extends Fragment {
     private TextView mTelecom;
     private TextView mTelecomCalculate;
     private String[] mSpinnerArray;
+    private Button mBtnToAddNpNumActivity;
     TelecomInfo telecomInfo;
     TelecomPaymentCalculate telecomPaymentCalculate;
 
@@ -41,24 +41,24 @@ public class TelecomInfoFragment extends Fragment {
         mTelecomCalculate = (TextView) rootView.findViewById(R.id.telecom_payment_calculation);
         mTelecom = (TextView) rootView.findViewById(R.id.telecom_payment);
         mSpinner = (Spinner) rootView.findViewById(R.id.spinner);
+        mBtnToAddNpNumActivity = (Button) rootView.findViewById(R.id.btn_to_AddNpNumActivity);
 
+        mBtnToAddNpNumActivity.setOnClickListener(btnAddIntraNumberOnClickLis);
         ArrayAdapter<String> adapter = this.createArrayAdapter();
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         SharedPreferences payMentPreferences = getActivity().getSharedPreferences("payment", 0);
-        
         int position = payMentPreferences.getInt("position", 0);
         
-        telecomPaymentCalculate = new TelecomPaymentCalculate(telecomInfo, position, this);
         mSpinner.setOnItemSelectedListener(mSpinnerItemSelLis);
         mSpinner.setAdapter(adapter);
+        
+        
 
         adapter.notifyDataSetChanged();
         mSpinner.setSelection(position);
 
-        mTelecomCalculate.setText("INTRAPAY : " + telecomPaymentCalculate.getIntraPay() + "\n"
-                + "OUTRAPAY : " + telecomPaymentCalculate.getOutraPay() + "\n" + "LOCALCALLPAY :"
-                + telecomPaymentCalculate.getLocalCallPay());
+
 
         return rootView;
 
@@ -103,5 +103,21 @@ public class TelecomInfoFragment extends Fragment {
         }
 
     };
+    
+    private Button.OnClickListener btnAddIntraNumberOnClickLis = new Button.OnClickListener(){
+
+        @Override
+        public void onClick(View arg0) {
+            // TODO Auto-generated method stub
+
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            intent.putExtras(bundle);
+            intent.setClass(getActivity(), AddNpNumberActivity.class);
+            startActivity(intent);
+        }
+        
+    };
+    
 
 }

@@ -2,19 +2,13 @@
 package com.android.benedict.rookie;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.example.android.effectivenavigation.R;
-
-import android.R.integer;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
-import android.util.Log;
 
 public class TelecomInfo {
 
