@@ -25,12 +25,16 @@ public class TelecomInfo {
     private static final int mIndexofId = 0;
     private static final int mIndexofCorporation = 1;
     private static final int mIndexofPayment = 2;
-    private static final int mIndexofOutraNework = 4;
-    private static final int mIndexofIntraNework = 3;
-    private static final int mIndexofLocalCall = 5;
+    private static final int mIndexofExtraFree = 4;
+    private static final int mIndexofIntraFree = 3;
+    private static final int mIndexofLocalCallFree = 5;
+    private static final int mIndexofOverIntraFree = 6;
+    private static final int mIndexofOverExtraFree = 7;
+    private static final int mIndexofOverLocalCallFree = 8;
+    
 
     private static final String[] Cht_Phone_NUM = {
-            "0987", "0956", "0939", "0937"
+            "0987", "0933", "0939", "0937","0975"
     };
     private static final String[] TWM_Phone_NUM = {
             "0918", "0920", "0922", "0935"
@@ -62,9 +66,12 @@ public class TelecomInfo {
                     Payment payment = new Payment(xrp.getAttributeValue(mIndexofId),
                             xrp.getAttributeValue(mIndexofCorporation),
                             xrp.getAttributeValue(mIndexofPayment),
-                            xrp.getAttributeValue(mIndexofIntraNework),
-                            xrp.getAttributeValue(mIndexofOutraNework),
-                            xrp.getAttributeValue(mIndexofLocalCall));
+                            xrp.getAttributeValue(mIndexofIntraFree),
+                            xrp.getAttributeValue(mIndexofExtraFree),
+                            xrp.getAttributeValue(mIndexofLocalCallFree),
+                            xrp.getAttributeValue(mIndexofOverIntraFree),
+                            xrp.getAttributeValue(mIndexofOverExtraFree),
+                            xrp.getAttributeValue(mIndexofOverLocalCallFree));
 
                     mtelecomPaymentMap.put(TELECOM_LIST_COUNT, payment);
                     TELECOM_LIST_COUNT++;
@@ -82,36 +89,42 @@ public class TelecomInfo {
         }
         for (int i = 0; i < Cht_Phone_NUM.length; i++)
             mTelecomPhoneNumMap.put(Cht_Phone_NUM[i], mCht);
-        
+
         for (int i = 0; i < TWM_Phone_NUM.length; i++)
             mTelecomPhoneNumMap.put(TWM_Phone_NUM[i], mTWM);
-        
+
         for (int i = 0; i < FET_Phone_NUM.length; i++)
             mTelecomPhoneNumMap.put(FET_Phone_NUM[i], mFET);
-        
+
         for (int i = 0; i < Local_Phone_NUM.length; i++)
             mTelecomPhoneNumMap.put(Local_Phone_NUM[i], mLocal);
 
     }
 
     public class Payment {
-        
+
         private String mId;
         private String mCorporation;
         private String mPayment;
-        private String mOutraNework;
-        private String mIntraNework;
-        private String mLocalCall;
+        private String mExtraFree;
+        private String mIntraFree;
+        private String mLocalCallFree;
+        private String mOverExtraFree;
+        private String mOverIntraFree;
+        private String mOverLocalCallFree;
 
-
-        public Payment(String id, String corporation, String payment, String intraNework,
-                String outraNework, String localcall) {
+        public Payment(String id, String corporation, String payment, String intraFree,
+                String extraFree, String localCallFree,String overIntraFree, String OverExtraFree, String OverLocalCallFree) {
             mId = id;
             mCorporation = corporation;
             mPayment = payment;
-            mIntraNework = intraNework;
-            mOutraNework = outraNework;
-            mLocalCall = localcall;
+            mIntraFree = intraFree;
+            mExtraFree = extraFree;
+            mLocalCallFree = localCallFree;
+            mOverIntraFree = overIntraFree;
+            mOverExtraFree = OverExtraFree;
+            mOverLocalCallFree = OverLocalCallFree;
+            
 
         }
 
@@ -121,24 +134,20 @@ public class TelecomInfo {
         return mtelecomPaymentMap.get(indexId).mId;
     }
 
-    public String getCorporation(int indexId) {
-        return mtelecomPaymentMap.get(indexId).mCorporation;
-    }
-
     public String getPayment(int indexId) {
         return mtelecomPaymentMap.get(indexId).mPayment;
     }
 
-    public String getIntraNework(int indexId) {
-        return mtelecomPaymentMap.get(indexId).mIntraNework;
+    public String getIntraFree(int indexId) {
+        return mtelecomPaymentMap.get(indexId).mIntraFree;
     }
 
-    public String getOutraNework(int indexId) {
-        return mtelecomPaymentMap.get(indexId).mOutraNework;
+    public String getOutraFree(int indexId) {
+        return mtelecomPaymentMap.get(indexId).mExtraFree;
     }
 
-    public String getLocalCall(int indexId) {
-        return mtelecomPaymentMap.get(indexId).mLocalCall;
+    public String getLocalCallFree(int indexId) {
+        return mtelecomPaymentMap.get(indexId).mLocalCallFree;
     }
 
     public int getTelecomInfoMapCount() {
@@ -149,4 +158,25 @@ public class TelecomInfo {
         return mTelecomPhoneNumMap.get(number);
 
     }
+
+    public String getCorporation(int indexId) {
+        // TODO Auto-generated method stub
+        return mtelecomPaymentMap.get(indexId).mCorporation;
+    }
+    
+    public String getOverIntraFree(int indexId) {
+        // TODO Auto-generated method stub
+        return mtelecomPaymentMap.get(indexId).mOverIntraFree;
+    }
+    
+    public String getOverExtraFree(int indexId) {
+        // TODO Auto-generated method stub
+        return mtelecomPaymentMap.get(indexId).mOverExtraFree;
+    }
+    
+    public String getOverLocalCallFree(int indexId) {
+        // TODO Auto-generated method stub
+        return mtelecomPaymentMap.get(indexId).mOverLocalCallFree;
+    }
+
 }

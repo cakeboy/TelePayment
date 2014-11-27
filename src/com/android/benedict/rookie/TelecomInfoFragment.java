@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,6 @@ public class TelecomInfoFragment extends Fragment {
     private Button mBtnToAddNpNumActivity;
     TelecomInfo telecomInfo;
     TelecomPaymentCalculate telecomPaymentCalculate;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -37,31 +37,32 @@ public class TelecomInfoFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.telecom_spinner, container, false);
 
         telecomInfo = new TelecomInfo(this.getActivity());
-        
+
         mTelecomCalculate = (TextView) rootView.findViewById(R.id.telecom_payment_calculation);
         mTelecom = (TextView) rootView.findViewById(R.id.telecom_payment);
         mSpinner = (Spinner) rootView.findViewById(R.id.spinner);
         mBtnToAddNpNumActivity = (Button) rootView.findViewById(R.id.btn_to_AddNpNumActivity);
 
         mBtnToAddNpNumActivity.setOnClickListener(btnAddIntraNumberOnClickLis);
-        ArrayAdapter<String> adapter = this.createArrayAdapter();
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setOnItemSelectedListener(mSpinnerItemSelLis);
+
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        Log.d("abc", "TelecomInfo onResume");
+
+        ArrayAdapter<String> mTelecomPaymentAdapter = createArrayAdapter();
+        mTelecomPaymentAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(mTelecomPaymentAdapter);
 
         SharedPreferences payMentPreferences = getActivity().getSharedPreferences("payment", 0);
         int position = payMentPreferences.getInt("position", 0);
-        
-        mSpinner.setOnItemSelectedListener(mSpinnerItemSelLis);
-        mSpinner.setAdapter(adapter);
-        
-        
-
-        adapter.notifyDataSetChanged();
         mSpinner.setSelection(position);
-
-
-
-        return rootView;
-
     }
 
     private ArrayAdapter<String> createArrayAdapter() {
@@ -78,21 +79,27 @@ public class TelecomInfoFragment extends Fragment {
         public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
             // TODO Auto-generated method stub
 
+            Log.d("abc", "onItemSelectd");
             SharedPreferences payMentPreferences = getActivity().getSharedPreferences("payment", 0);
             payMentPreferences.edit().putInt("position", position).commit();
 
             mTelecom.setText(telecomInfo.getCorporation(position) + "\n"
-                    + telecomInfo.getPayment(position) + "\n"
-                    + telecomInfo.getIntraNework(position) + "\n"
-                    + telecomInfo.getOutraNework(position) + "\n"
-                    + telecomInfo.getLocalCall(position));
+                    + telecomInfo.getPayment(position) + "\n" + telecomInfo.getIntraFree(position)
+                    + "Min" + "\n" + telecomInfo.getOutraFree(position) + "Min" + "\n"
+                    + telecomInfo.getLocalCallFree(position) + "Min" + "\n"
+                    + telecomInfo.getOverIntraFree(position) + "second" + "\n"
+                    + telecomInfo.getOverExtraFree(position) + "second" + "\n"
+                    + telecomInfo.getOverLocalCallFree(position) + "second");
 
             telecomPaymentCalculate = new TelecomPaymentCalculate(telecomInfo, position,
                     TelecomInfoFragment.this);
 
-            mTelecomCalculate.setText("INTRAPAY : " + telecomPaymentCalculate.getIntraPay() + "\n"
-                    + "OUTRAPAY : " + telecomPaymentCalculate.getOutraPay() + "\n"
-                    + "LOCALCALLPAY :" + telecomPaymentCalculate.getLocalCallPay());
+            mTelecomCalculate
+                    .setText("INTRAPAY : "
+                            + String.format("%.2f",
+                                    Float.parseFloat(telecomPaymentCalculate.getIntraPay())) + "\n"
+                            + "OUTRAPAY : " + telecomPaymentCalculate.getOutraPay() + "\n"
+                            + "LOCALCALLPAY :" + telecomPaymentCalculate.getLocalCallPay());
 
         }
 
@@ -103,8 +110,8 @@ public class TelecomInfoFragment extends Fragment {
         }
 
     };
-    
-    private Button.OnClickListener btnAddIntraNumberOnClickLis = new Button.OnClickListener(){
+
+    private Button.OnClickListener btnAddIntraNumberOnClickLis = new Button.OnClickListener() {
 
         @Override
         public void onClick(View arg0) {
@@ -116,8 +123,7 @@ public class TelecomInfoFragment extends Fragment {
             intent.setClass(getActivity(), AddNpNumberActivity.class);
             startActivity(intent);
         }
-        
+
     };
-    
 
 }

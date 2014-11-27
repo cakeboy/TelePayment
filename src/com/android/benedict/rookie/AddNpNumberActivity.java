@@ -32,7 +32,8 @@ public class AddNpNumberActivity extends ListActivity {
     private static ContentResolver mContentResolver;
     private Spinner mNpNumCorpSpinner;
     public List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
-    private String[] mNpNumCorpSpinnerArray = {"CHTtelecom","TWMtelecom","FETtelecom"};
+    private String[] mNpNumCorpSpinnerArray = {"IntraNetwork","ExtraNetwork","Others"};
+    
     ListView addNpNumList;
     ListAdapter adapter;
     Cursor cursor;
@@ -81,6 +82,7 @@ public class AddNpNumberActivity extends ListActivity {
             newNpNum.put("coporation",mNpNumCorpSpinnerArray[mNpNumCorpSpinnerPosition] );
             mContentResolver.insert(NpPhoneNumberContentProvider.CONTENT_URI, newNpNum);
             setAdapter();
+            //madapter.notifyDataSetChanged();
             }
 
         }
