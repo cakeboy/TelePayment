@@ -13,13 +13,13 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.widget.TextView;
 
-public class CustomCursorAdapter extends SimpleCursorAdapter {
+public class CallLogCursorAdapter extends SimpleCursorAdapter {
 
     String[] mOriginalFrom;
 
     // private Object setViewText;
 
-    public CustomCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to,
+    public CallLogCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to,
             int flags) {
         super(context, layout, c, from, to, flags);
         // mTo = to;
@@ -37,7 +37,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         View vName = view.findViewById(R.id.name);
         String name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
         if (name == null)
-            setViewText((TextView) vName, "UnKnow");
+            setViewText((TextView) vName, "UnKnown");
         else
             setViewText((TextView) vName, name);
 

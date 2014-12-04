@@ -1,8 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/query_date_from"
+        style="?android:attr/actionButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/query_start"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textview_date_from"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="1dp"
+        android:background="#9D9D9D"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/query_date_to"
+        style="?android:attr/actionButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/query_end"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textview_date_to"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="1dp"
+        android:background="#9D9D9D"
+        android:orientation="vertical" >
+    </LinearLayout>
 
     <Spinner
         android:id="@+id/spinner"
@@ -10,23 +66,192 @@
         android:layout_height="wrap_content"
         android:prompt="@string/spinner_title" />
 
-    <TextView
-        android:id="@+id/telecom_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/telecom_payment_calculation"
+        <TableRow>
+
+            <TextView android:text="@string/telecom_corporation" />
+
+            <TextView
+                android:id="@+id/telecom_corporation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_payment" />
+
+            <TextView
+                android:id="@+id/telecom_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="1dp"
+            android:background="#9D9D9D"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_intra_free" />
+
+            <TextView
+                android:id="@+id/telecom_intra_free"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_extra_free" />
+
+            <TextView
+                android:id="@+id/telecom_extra_free"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_localcall_free" />
+
+            <TextView
+                android:id="@+id/telecom_localcall_free"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="1dp"
+            android:background="#9D9D9D"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_intra" />
+
+            <TextView
+                android:id="@+id/telecom_intra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_extra" />
+
+            <TextView
+                android:id="@+id/telecom_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_localcall" />
+
+            <TextView
+                android:id="@+id/telecom_localcall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="1dp"
+            android:background="#9D9D9D"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_intra_remains" />
+
+            <TextView
+                android:id="@+id/telecom_intra_remain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+
+            <TextView android:text="@string/telecom_intra_pay" />
+
+            <TextView
+                android:id="@+id/telecom_intra_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_extra_remains" />
+
+            <TextView
+                android:id="@+id/telecom_extra_remain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+
+            <TextView android:text="@string/telecom_extra_pay" />
+
+            <TextView
+                android:id="@+id/telecom_extra_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="@string/telecom_localcall_remains" />
+
+            <TextView
+                android:id="@+id/telecom_localcall_remain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+
+            <TextView android:text="@string/telecom_localcall_pay" />
+
+            <TextView
+                android:id="@+id/telecom_localcall_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="1dp"
+        android:background="#9D9D9D"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_to_AddNpNumActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
-            <Button
-            android:id="@+id/btn_to_AddNpNumActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit NP Number" />
-    
-    
+        android:text="@string/btn_edit_np_num" />
 
 </LinearLayout>

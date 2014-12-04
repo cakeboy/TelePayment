@@ -28,7 +28,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-public class MyTelecomInfoActivity extends FragmentActivity implements ActionBar.TabListener {
+public class CallLogInfoActivity extends FragmentActivity implements ActionBar.TabListener {
 
     public static final String Out_Going_PageTitle = "OutGoing";
     public static final String In_Coming_PageTitle = "InComing";
@@ -131,11 +131,11 @@ public class MyTelecomInfoActivity extends FragmentActivity implements ActionBar
 
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public static final int callInfoPageNum = 0;
-        public static final int outGoingPageNum = 1;
-        public static final int inComingPageNum = 2;
-        public static final int missedPageNum = 3;
-        public static final int numOfFragment = 4;
+        public static final int CALL_INFO_PAGE_NUM = 0;
+        public static final int OUT_GOING_PAGE_NUM = 1;
+        public static final int IN_COMING_PAGE_NUM = 2;
+        public static final int MISS_PAGE_NUM = 3;
+        public static final int NUM_OF_FRAGMENT = 4;
 
         public AppSectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -155,21 +155,21 @@ public class MyTelecomInfoActivity extends FragmentActivity implements ActionBar
              * fragment.setArguments(args); return fragment;
              */
 
-                case callInfoPageNum:
+                case CALL_INFO_PAGE_NUM:
 
                     return new TelecomInfoFragment();
 
-                case outGoingPageNum:
+                case OUT_GOING_PAGE_NUM:
 
-                    return CallLogCursorLoaderFragment.newInstance(CallLog.Calls.OUTGOING_TYPE);
+                    return CallLogFragment.newInstance(CallLog.Calls.OUTGOING_TYPE);
 
-                case inComingPageNum:
+                case IN_COMING_PAGE_NUM:
 
-                    return CallLogCursorLoaderFragment.newInstance(CallLog.Calls.INCOMING_TYPE);
+                    return CallLogFragment.newInstance(CallLog.Calls.INCOMING_TYPE);
 
-                case missedPageNum:
+                case MISS_PAGE_NUM:
 
-                    return CallLogCursorLoaderFragment.newInstance(CallLog.Calls.MISSED_TYPE);
+                    return CallLogFragment.newInstance(CallLog.Calls.MISSED_TYPE);
 
                 default:
                     return null;
@@ -179,12 +179,12 @@ public class MyTelecomInfoActivity extends FragmentActivity implements ActionBar
 
         @Override
         public int getCount() {
-            return numOfFragment;
+            return NUM_OF_FRAGMENT;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return " ";
+            return null;
         }
     }
 }

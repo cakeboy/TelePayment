@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-public class OutgoingCallBroadcastReceiver extends BroadcastReceiver {
+public class PhoneStateReciever extends BroadcastReceiver {
 
-    Phonelistener phonelistener;
+    StarTelecomInfoSrevice starTelecomInfoSrevice;
 
-    public static final String MY_START_SERVICE = "PhoneListener.Start";
+    public static final String MY_START_SERVICE = "StarTelecomInfoSrevice.Start";
 
     /*
      * (non-Javadoc)
@@ -29,7 +29,7 @@ public class OutgoingCallBroadcastReceiver extends BroadcastReceiver {
                 && !intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(
                         intent.getStringExtra(TelephonyManager.EXTRA_STATE_RINGING))) {
 
-            Intent it = new Intent(context, Phonelistener.class);
+            Intent it = new Intent(context, StarTelecomInfoSrevice.class);
             it.setAction(MY_START_SERVICE);
             context.startService(it);
         }

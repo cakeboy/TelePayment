@@ -17,74 +17,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.benedict.rookie.R;
+public class CallLogFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-public class CallLogCursorLoaderFragment extends ListFragment implements
-        LoaderManager.LoaderCallbacks<Cursor> {
-
-    private int mCallType;
-    private static final int URL_LOADER = 0;
+    private static final int CALL_LOG_LOADER = 0;
     public List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
-    private CustomCursorAdapter mCustomCursorAdapter;
-    private String[] Call_Log_Type = new String[1];
-    
-    public static CallLogCursorLoaderFragment newInstance(int callType){
-        CallLogCursorLoaderFragment fragment = new CallLogCursorLoaderFragment();
+    private CallLogCursorAdapter mCustomCursorAdapter;
+    private String[] callLogType = new String[1];
+    private static String CALL_TYPE;
+    public static CallLogFragment newInstance(int callType) {
+        CallLogFragment fragment = new CallLogFragment();
         Bundle args = new Bundle();
-        args.putInt("callType", callType);
+        args.putInt(CALL_TYPE, callType);
         fragment.setArguments(args);
         return fragment;
-        }
-
-//    public CallLogCursorLoaderFragment(int callType) {
-//        //mCallType = callType;
-//        switch (callType) {
-//            case CallLog.Calls.INCOMING_TYPE:
-//                Call_Log_Type[0] = Integer.toString(CallLog.Calls.INCOMING_TYPE);
-//                //break;
-//
-//            case CallLog.Calls.OUTGOING_TYPE:
-//                Call_Log_Type[0] = Integer.toString(CallLog.Calls.OUTGOING_TYPE);
-//                //break;
-//
-//            case CallLog.Calls.MISSED_TYPE:
-//                Call_Log_Type[0] = Integer.toString(CallLog.Calls.MISSED_TYPE);
-//                //break;
-//
-//            default:
-//                break;
-//        }
-//        
-//    }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-
-        getLoaderManager().initLoader(1, null, this);
+        // getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int loaderId, Bundle arg1) {
         // TODO Auto-generated method stub
 
-        // set the selection of cursorLoader
-        //String[] Call_Log_Type = new String[1];
-        
-        //int args = arg1.getInt("callType");
-
-        switch (getArguments().getInt("callType")) {
+        switch (getArguments().getInt(CALL_TYPE)) {
             case CallLog.Calls.INCOMING_TYPE:
-                Call_Log_Type[0] = Integer.toString(CallLog.Calls.INCOMING_TYPE);
+                callLogType[0] = Integer.toString(CallLog.Calls.INCOMING_TYPE);
                 break;
 
             case CallLog.Calls.OUTGOING_TYPE:
-                Call_Log_Type[0] = Integer.toString(CallLog.Calls.OUTGOING_TYPE);
+                callLogType[0] = Integer.toString(CallLog.Calls.OUTGOING_TYPE);
                 break;
 
             case CallLog.Calls.MISSED_TYPE:
-                Call_Log_Type[0] = Integer.toString(CallLog.Calls.MISSED_TYPE);
+                callLogType[0] = Integer.toString(CallLog.Calls.MISSED_TYPE);
                 break;
 
             default:
@@ -93,14 +62,15 @@ public class CallLogCursorLoaderFragment extends ListFragment implements
 
         switch (loaderId) {
 
-            case URL_LOADER:
+            case CALL_LOG_LOADER:
 
                 return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, null,
-                        CallLog.Calls.TYPE + "= ?", Call_Log_Type, android.provider.CallLog.Calls._ID
+                        CallLog.Calls.TYPE + "= ?", callLogType, android.provider.CallLog.Calls._ID
                                 + " DESC");
-//                return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, null,
-//                        null, null, android.provider.CallLog.Calls._ID
-//                                + " DESC");
+                // return new CursorLoader(getActivity(),
+                // CallLog.Calls.CONTENT_URI, null,
+                // null, null, android.provider.CallLog.Calls._ID
+                // + " DESC");
             default:
                 return null;
         }
@@ -117,7 +87,7 @@ public class CallLogCursorLoaderFragment extends ListFragment implements
                 R.id.name, R.id.mobile, R.id.date
         };
 
-        mCustomCursorAdapter = new CustomCursorAdapter(getActivity(), R.layout.call_log, cursor,
+        mCustomCursorAdapter = new CallLogCursorAdapter(getActivity(), R.layout.call_log, cursor,
                 from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         setListAdapter(mCustomCursorAdapter);
         mCustomCursorAdapter.swapCursor(cursor);
@@ -133,7 +103,7 @@ public class CallLogCursorLoaderFragment extends ListFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        getLoaderManager().initLoader(URL_LOADER, null, this);
+        getLoaderManager().initLoader(CALL_LOG_LOADER, null, this);
         return inflater.inflate(R.layout.callogfragment, container, false);
 
     }

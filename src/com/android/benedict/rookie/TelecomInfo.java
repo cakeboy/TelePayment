@@ -7,20 +7,17 @@ import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 
 public class TelecomInfo {
 
-    /*
-     * private String mId; private String mCorporation; private String mPayment;
-     * private String mOutraNework; private String mIntraNework; private String
-     * mLocalCall;
-     */
-    private static final String mCht = "CHTtelecom";
-    private static final String mTWM = "TWMtelecom";
-    private static final String mFET = "FETtelecom";
-    private static final String mLocal = "LocalPhone";
+    private static final String CHT = "CHTtelecom";
+    private static final String TWM = "TWMtelecom";
+    private static final String FET = "FETtelecom";
+    private static final String LOCAL = "LocalPhone";
+    private static final String FREECALL = "FreeCall";
 
     private static final int mIndexofId = 0;
     private static final int mIndexofCorporation = 1;
@@ -31,25 +28,27 @@ public class TelecomInfo {
     private static final int mIndexofOverIntraFree = 6;
     private static final int mIndexofOverExtraFree = 7;
     private static final int mIndexofOverLocalCallFree = 8;
-    
 
-    private static final String[] Cht_Phone_NUM = {
-            "0987", "0933", "0939", "0937","0975"
+    private static final String[] CHT_PHONE_PREFIX = {
+            "0910", "0921", "0933", "0939", "0937", "0972", "0975"
     };
-    private static final String[] TWM_Phone_NUM = {
-            "0918", "0920", "0922", "0935"
+    private static final String[] TWM_PHONE_PREFIX = {
+            "0918", "0920", "0922", "0935", "0939", "0956", "0987"
     };
-    private static final String[] FET_Phone_NUM = {
-            "0916", "0917", "0926", "0930"
+    private static final String[] FET_PHONE_PREFIX = {
+            "0916", "0917", "0926", "0930", "0953", "0986"
     };
-    private static final String[] Local_Phone_NUM = {
+    private static final String[] LOCAL_PHONE_PREFIX = {
             "02", "03", "04", "07", "08"
     };
+    private static final String[] FREE_CALL_PREFIX = {
+        "0800"
+    };
 
+    @SuppressLint("UseSparseArrays")
     private Map<Integer, Payment> mtelecomPaymentMap = new HashMap<Integer, Payment>();
     private Map<String, String> mTelecomPhoneNumMap = new HashMap<String, String>();
 
-    // private static int TELECOM_LIST_COUNT = 0;
     public TelecomInfo(Context context) {
 
         int TELECOM_LIST_COUNT = 0;
@@ -87,17 +86,20 @@ public class TelecomInfo {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        for (int i = 0; i < Cht_Phone_NUM.length; i++)
-            mTelecomPhoneNumMap.put(Cht_Phone_NUM[i], mCht);
+        for (int i = 0; i < CHT_PHONE_PREFIX.length; i++)
+            mTelecomPhoneNumMap.put(CHT_PHONE_PREFIX[i], CHT);
 
-        for (int i = 0; i < TWM_Phone_NUM.length; i++)
-            mTelecomPhoneNumMap.put(TWM_Phone_NUM[i], mTWM);
+        for (int i = 0; i < TWM_PHONE_PREFIX.length; i++)
+            mTelecomPhoneNumMap.put(TWM_PHONE_PREFIX[i], TWM);
 
-        for (int i = 0; i < FET_Phone_NUM.length; i++)
-            mTelecomPhoneNumMap.put(FET_Phone_NUM[i], mFET);
+        for (int i = 0; i < FET_PHONE_PREFIX.length; i++)
+            mTelecomPhoneNumMap.put(FET_PHONE_PREFIX[i], FET);
 
-        for (int i = 0; i < Local_Phone_NUM.length; i++)
-            mTelecomPhoneNumMap.put(Local_Phone_NUM[i], mLocal);
+        for (int i = 0; i < LOCAL_PHONE_PREFIX.length; i++)
+            mTelecomPhoneNumMap.put(LOCAL_PHONE_PREFIX[i], LOCAL);
+
+        for (int i = 0; i < FREE_CALL_PREFIX.length; i++)
+            mTelecomPhoneNumMap.put(FREE_CALL_PREFIX[i], FREECALL);
 
     }
 
@@ -114,7 +116,8 @@ public class TelecomInfo {
         private String mOverLocalCallFree;
 
         public Payment(String id, String corporation, String payment, String intraFree,
-                String extraFree, String localCallFree,String overIntraFree, String OverExtraFree, String OverLocalCallFree) {
+                String extraFree, String localCallFree, String overIntraFree, String OverExtraFree,
+                String OverLocalCallFree) {
             mId = id;
             mCorporation = corporation;
             mPayment = payment;
@@ -124,7 +127,6 @@ public class TelecomInfo {
             mOverIntraFree = overIntraFree;
             mOverExtraFree = OverExtraFree;
             mOverLocalCallFree = OverLocalCallFree;
-            
 
         }
 
@@ -163,17 +165,17 @@ public class TelecomInfo {
         // TODO Auto-generated method stub
         return mtelecomPaymentMap.get(indexId).mCorporation;
     }
-    
+
     public String getOverIntraFree(int indexId) {
         // TODO Auto-generated method stub
         return mtelecomPaymentMap.get(indexId).mOverIntraFree;
     }
-    
+
     public String getOverExtraFree(int indexId) {
         // TODO Auto-generated method stub
         return mtelecomPaymentMap.get(indexId).mOverExtraFree;
     }
-    
+
     public String getOverLocalCallFree(int indexId) {
         // TODO Auto-generated method stub
         return mtelecomPaymentMap.get(indexId).mOverLocalCallFree;

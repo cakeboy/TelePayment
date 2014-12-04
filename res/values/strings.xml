@@ -15,11 +15,31 @@
   -->
 
 <resources>
-    <string name="app_name">Effective Navigation</string>
+    <string name="app_name">Call Log</string>
 
-    <string name="dummy_section_text">Section %1d is just a dummy section.</string>
-
-    <string name="demo_external_activity">Demo External Activity</string>
-    <string name="demo_collection">Demo Collection</string>
     <string name="spinner_title">Telecom</string>
+    
+    <string name="query_start">Query Start</string>
+    <string name="query_end">Query End</string>
+    <string name="telecom_corporation">Corporation</string>
+    <string name="telecom_payment">Payment</string>
+    <string name="telecom_intra_free">Intra Free</string>
+    <string name="telecom_extra_free">Extra Free</string>
+    <string name="telecom_localcall_free">LocalCall Free</string>
+    <string name="telecom_intra">Intra</string>
+    <string name="telecom_extra">Extra</string>
+    <string name="telecom_localcall">LocalCall</string>
+    <string name="telecom_intra_remains">Intra Remains</string>
+    <string name="telecom_extra_remains">Extra Remains</string>
+    <string name="telecom_localcall_remains">LocalCall Remains</string>
+    <string name="telecom_intra_pay">Intra Pay</string>
+    <string name="telecom_extra_pay">Extra Pay</string>
+    <string name="telecom_localcall_pay">LocalCall Pay</string>
+    <string name="btn_edit_np_num">Edit NP Number</string>
+    <string name="np_num_type_intra_network">IntraNetWork</string>
+    <string name="np_num_type_extra_network">ExtraNetWork</string>
+    <string name="np_num_type_hotline">HotLine</string>
+    <string name="dialog_confirm">Delete This Number</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">OK</string>
 </resources>

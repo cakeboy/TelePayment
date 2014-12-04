@@ -2,16 +2,13 @@ package com.android.benedict.rookie;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
-import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.util.Log;
 
 public class NpPhoneNumberContentProvider extends ContentProvider{
     
     private  NpPhoneNumberDbHelper NpPhoneNumberDbHp;
-    private  static  UriMatcher URI_MATCHER =  new  UriMatcher(UriMatcher.NO_MATCH);
     public  static  final  String AUTHORITY =  "com.benedict.npphonenumber" ;
     public  static  final  Uri CONTENT_URI = Uri.parse( "content://" +AUTHORITY+ "/npphonenumbers" );  
     
