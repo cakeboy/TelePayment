@@ -1,9 +1,6 @@
 
 package com.android.benedict.rookie;
 
-import com.android.benedict.rookie.R;
-
-import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,41 +14,35 @@ import android.os.IBinder;
 import android.provider.CallLog;
 import android.util.Log;
 
-@SuppressLint("NewApi")
-public class Phonelistener extends Service {
+public class StarTelecomInfoSrevice extends Service {
 
-    private static ContentResolver mContRes;
+    private static ContentResolver mResolver;
     private Handler handler = new Handler();
     final Runnable runnable = new Runnable() {
         public void run() {
             // TODO Auto-generated method stub
-            mContRes = getContentResolver();
-            Cursor c = mContRes.query(CallLog.Calls.CONTENT_URI, null, null, null,
+            mResolver = getContentResolver();
+            Cursor cursor = mResolver.query(CallLog.Calls.CONTENT_URI, null, null, null,
                     android.provider.CallLog.Calls.DATE + " DESC");
             String lastCallNumber = "";
             String lastCallDate = "";
             String lastCallDuration = "";
-            c.moveToPosition(-1);
-            // while(c.moveToFirst()){
-            // duration = c.getString(c.getColumnIndex(CallLog.Calls.DURATION));
-            // lastCallNumber =
-            // c.getString(c.getColumnIndex(CallLog.Calls.NUMBER));;
-            // date = c.getString(c.getColumnIndex(CallLog.Calls.DATE));
-            // Log.d("abc","date = "+date+"duration =" + duration +
-            // ", lastCallNumber="+lastCallNumber);
-            //
-            // }
-            if (c.moveToFirst()) {
-                lastCallDuration = c.getString(c.getColumnIndex(CallLog.Calls.DURATION));
-                lastCallNumber = c.getString(c.getColumnIndex(CallLog.Calls.NUMBER));
-                lastCallDate = c.getString(c.getColumnIndex(CallLog.Calls.DATE));
+
+            if (cursor == null)
+                return;
+            cursor.moveToPosition(-1);
+
+            if (cursor.moveToFirst()) {
+                lastCallDuration = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DURATION));
+                lastCallNumber = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
+                lastCallDate = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DATE));
                 // Log.d("abc", "last date = " + lastCallDate + "duration =" +
                 // lastCallDuration + ", lastCallNumber="
                 // + lastCallNumber);
 
                 NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                Notification.Builder builder = new Notification.Builder(Phonelistener.this);
-                Intent notifyIntent = new Intent(Phonelistener.this, MyTelecomInfoActivity.class);
+                Notification.Builder builder = new Notification.Builder(StarTelecomInfoSrevice.this);
+                Intent notifyIntent = new Intent(StarTelecomInfoSrevice.this, CallLogInfoActivity.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0,
                         notifyIntent, 0);
 
@@ -65,7 +56,7 @@ public class Phonelistener extends Service {
                 notificationManager.notify(R.drawable.ic_launcher, notification);
 
             }
-            c.close();
+            cursor.close();
         }
     };
 
@@ -87,7 +78,7 @@ public class Phonelistener extends Service {
         if (intent == null) {
             return super.onStartCommand(intent, flags, startId);
         }
-        if (intent.getAction().equals("PhoneListener.Start")) {
+        if (intent.getAction().equals("StarTelecomInfoSrevice.Start")) {
             handler.postDelayed(runnable, 1000);
         }
         return super.onStartCommand(intent, flags, startId);
