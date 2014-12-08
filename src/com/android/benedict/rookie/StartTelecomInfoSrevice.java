@@ -3,7 +3,6 @@ package com.android.benedict.rookie;
 
 import java.text.SimpleDateFormat;
 
-import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -22,9 +21,6 @@ public class StartTelecomInfoSrevice extends Service {
     private static ContentResolver mResolver;
     private Handler handler = new Handler();
     final Runnable runnable = new Runnable() {
-        @SuppressLint({
-                "NewApi", "SimpleDateFormat"
-        })
         public void run() {
             // TODO Auto-generated method stub
             mResolver = getContentResolver();

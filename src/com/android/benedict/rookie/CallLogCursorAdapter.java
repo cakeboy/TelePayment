@@ -3,9 +3,6 @@ package com.android.benedict.rookie;
 
 import java.text.SimpleDateFormat;
 
-import com.android.benedict.rookie.R;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.CallLog;
@@ -24,7 +21,7 @@ public class CallLogCursorAdapter extends SimpleCursorAdapter {
         // TODO Auto-generated constructor stub
     }
 
-    @SuppressLint("SimpleDateFormat")
+    //@SuppressLint("SimpleDateFormat")
     public void bindView(View view, Context context, Cursor cursor) {
         // TODO Auto-generated method stub
         super.bindView(view, context, cursor);

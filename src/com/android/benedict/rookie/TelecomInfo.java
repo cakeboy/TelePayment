@@ -60,7 +60,6 @@ public class TelecomInfo {
             while (eventType != XmlResourceParser.END_DOCUMENT) {
 
                 if (eventType == XmlResourceParser.START_TAG && xrp.getName().equals(PAYMENT_TYPE)) {
-                    // String tagName= xrp.getName();
                     // Log.d("abc","tagName="+tagName);
 
                     Payment payment = new Payment(xrp.getAttributeValue(mIndexofId),
@@ -128,9 +127,7 @@ public class TelecomInfo {
             mOverIntraFree = overIntraFree;
             mOverExtraFree = OverExtraFree;
             mOverLocalCallFree = OverLocalCallFree;
-
         }
-
     }
 
     public String getId(int indexId) {

@@ -27,9 +27,11 @@ import android.widget.Spinner;
 
 public class EditNpNumberActivity extends ListActivity {
 
-    private final String NP_NUM_TYPE_INTRA = "IntraNetwork";
+    private static final String NP_NUM_TYPE_INTRA = "IntraNetwork";
     private static final String NP_NUM_TYPE_EXTRA = "ExtraNetwork";
     private static final String NP_NUM_TYPE_HOTLINE = "HotLine";
+    private static final String NP_NUM_TYPE = "NPtype";
+    private String NP_NUM_SPINNER_POSITION = "position";
     private Button mBtnAddNewIntraNum;
     private EditText mEdtNpNum;
     private int mNpNumCorpSpinnerPosition;
@@ -78,8 +80,8 @@ public class EditNpNumberActivity extends ListActivity {
         @Override
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
-            SharedPreferences payMentPreferences = getSharedPreferences("telecomcorp", 0);
-            mNpNumCorpSpinnerPosition = payMentPreferences.getInt("position", 0);
+            SharedPreferences payMentPreferences = getSharedPreferences(NP_NUM_TYPE, 0);
+            mNpNumCorpSpinnerPosition = payMentPreferences.getInt(NP_NUM_SPINNER_POSITION, 0);
 
             Uri uri = NpPhoneNumberContentProvider.CONTENT_URI;
 
@@ -139,8 +141,8 @@ public class EditNpNumberActivity extends ListActivity {
         public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
             // TODO Auto-generated method stub
 
-            SharedPreferences payMentPreferences = getSharedPreferences("telecomcorp", 0);
-            payMentPreferences.edit().putInt("position", position).commit();
+            SharedPreferences payMentPreferences = getSharedPreferences(NP_NUM_TYPE, 0);
+            payMentPreferences.edit().putInt(NP_NUM_SPINNER_POSITION, position).commit();
         }
 
         @Override
