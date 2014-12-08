@@ -18,6 +18,7 @@ public class TelecomInfo {
     private static final String FET = "FETtelecom";
     private static final String LOCAL = "LocalPhone";
     private static final String FREECALL = "FreeCall";
+    private static final String PAYMENT_TYPE = "fee_project";
 
     private static final int mIndexofId = 0;
     private static final int mIndexofCorporation = 1;
@@ -58,7 +59,7 @@ public class TelecomInfo {
 
             while (eventType != XmlResourceParser.END_DOCUMENT) {
 
-                if (eventType == XmlResourceParser.START_TAG && xrp.getName().equals("fee_project")) {
+                if (eventType == XmlResourceParser.START_TAG && xrp.getName().equals(PAYMENT_TYPE)) {
                     // String tagName= xrp.getName();
                     // Log.d("abc","tagName="+tagName);
 

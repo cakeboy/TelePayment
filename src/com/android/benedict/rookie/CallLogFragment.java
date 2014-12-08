@@ -87,7 +87,7 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
                 R.id.name, R.id.mobile, R.id.date
         };
 
-        mCustomCursorAdapter = new CallLogCursorAdapter(getActivity(), R.layout.call_log, cursor,
+        mCustomCursorAdapter = new CallLogCursorAdapter(getActivity(), R.layout.call_log_adapter, cursor,
                 from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         setListAdapter(mCustomCursorAdapter);
         mCustomCursorAdapter.swapCursor(cursor);
@@ -104,7 +104,7 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         getLoaderManager().initLoader(CALL_LOG_LOADER, null, this);
-        return inflater.inflate(R.layout.callogfragment, container, false);
+        return inflater.inflate(R.layout.callog_fragment, container, false);
 
     }
 

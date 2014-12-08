@@ -16,6 +16,7 @@
 
 <resources>
     <string name="app_name">Call Log</string>
+    <string name="activity_name">Edit NP Number</string>
 
     <string name="spinner_title">Telecom</string>
     
@@ -42,4 +43,8 @@
     <string name="dialog_confirm">Delete This Number</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">OK</string>
+    <string name="btn_text_add">Add</string>
+    <string name="notify_text_duration">Duration</string>
+    <string name="notify_text_date">Date</string>
+    
 </resources>

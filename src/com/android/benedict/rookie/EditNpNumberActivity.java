@@ -49,11 +49,11 @@ public class EditNpNumberActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_np_number);
+        setContentView(R.layout.activity_add_np_number);
 
         telecomInfo = new TelecomInfo(this);
 
-        setComponentView();
+        setupViewComponent();
 
         mContentResolver = getContentResolver();
 
@@ -63,7 +63,7 @@ public class EditNpNumberActivity extends ListActivity {
 
     }
 
-    private void setComponentView() {
+    private void setupViewComponent() {
         mEdtNpNum = (EditText) findViewById(R.id.edt_np_number);
         mBtnAddNewIntraNum = (Button) findViewById(R.id.btn_add_intra_number);
         mBtnAddNewIntraNum.setOnClickListener(BtnAddNewIntraNumOnClickLis);
@@ -122,6 +122,7 @@ public class EditNpNumberActivity extends ListActivity {
                     }
                 }
             }
+            mEdtNpNum.setText("");
         }
     };
 
@@ -153,8 +154,10 @@ public class EditNpNumberActivity extends ListActivity {
         // Log.i( "abc" , ".................uri.........." +uri);
 
         cursor = getContentResolver().query(uri, null, null, null, null);
-        // cursor.moveToFirst();
-        adapter = new SimpleCursorAdapter(this, R.layout.eidt_npnumber_activity, cursor,
+
+        cursor.moveToFirst();
+
+        adapter = new SimpleCursorAdapter(this, R.layout.eidt_npnumber_adapter, cursor,
                 new String[] {
                         "number", "coporation"
                 }, new int[] {

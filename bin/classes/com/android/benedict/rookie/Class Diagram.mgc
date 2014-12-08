@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ClassDiagram>
-    <Class name="com.android.benedict.rookie.TelecomInfoFragment"
-        x="1092" y="626">
+    <Class name="com.android.benedict.rookie.TelecomInfoFragment" x="62" y="53">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -13,13 +12,13 @@
             destinationClassName="com.android.benedict.rookie.TelecomInfo"
             endpointName="telecomInfo" kind="Simple"/>
         <Association
-            destinationClassName="com.android.benedict.rookie.TelecomPaymentCalculate"
+            destinationClassName="com.android.benedict.rookie.ComputeTelecomFare"
             endpointName="telecomPaymentCalculate" kind="Simple"/>
         <Communication destinationClassName="com.android.benedict.rookie.TelecomInfo"/>
     </Class>
     <Class
-        name="com.android.benedict.rookie.MyTelecomInfoActivity.AppSectionsPagerAdapter"
-        x="1221" y="466">
+        name="com.android.benedict.rookie.CallLogInfoActivity.AppSectionsPagerAdapter"
+        x="442" y="477">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -27,9 +26,10 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Communication destinationClassName="com.android.benedict.rookie.CallLogCursorLoaderFragment"/>
+        <Communication destinationClassName="com.android.benedict.rookie.CallLogFragment"/>
     </Class>
-    <Class name="com.android.benedict.rookie.Phonelistener" x="718" y="65">
+    <Class name="com.android.benedict.rookie.CallLogInfoActivity"
+        x="370" y="562">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -37,9 +37,13 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.android.benedict.rookie.CallLogInfoActivity.AppSectionsPagerAdapter"
+            endpointName="mAppSectionsPagerAdapter" kind="Simple"/>
+        <Communication destinationClassName="com.android.benedict.rookie.CallLogFragment"/>
     </Class>
     <Class name="com.android.benedict.rookie.TelecomInfo.Payment"
-        x="503" y="520">
+        x="1010" y="502">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -50,7 +54,7 @@
     </Class>
     <Class
         name="com.android.benedict.rookie.NpPhoneNumberContentProvider"
-        x="1149" y="126">
+        x="612" y="219">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -62,8 +66,7 @@
             destinationClassName="com.android.benedict.rookie.NpPhoneNumberDbHelper"
             endpointName="NpPhoneNumberDbHp" kind="Simple"/>
     </Class>
-    <Class name="com.android.benedict.rookie.MyTelecomInfoActivity"
-        x="822" y="302">
+    <Class name="com.android.benedict.rookie.ComputeTelecomFare" x="562" y="28">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -71,13 +74,10 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Association
-            destinationClassName="com.android.benedict.rookie.MyTelecomInfoActivity.AppSectionsPagerAdapter"
-            endpointName="mAppSectionsPagerAdapter" kind="Simple"/>
-        <Communication destinationClassName="com.android.benedict.rookie.CallLogCursorLoaderFragment"/>
+        <Communication destinationClassName="com.android.benedict.rookie.TelecomInfo"/>
     </Class>
     <Class name="com.android.benedict.rookie.NpPhoneNumberDbHelper"
-        x="1162" y="277">
+        x="877" y="82">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -86,9 +86,7 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class
-        name="com.android.benedict.rookie.OutgoingCallBroadcastReceiver"
-        x="1053" y="16">
+    <Class name="com.android.benedict.rookie.PhoneStateReciever" x="614" y="452">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -97,11 +95,21 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
         <Association
-            destinationClassName="com.android.benedict.rookie.Phonelistener"
-            endpointName="phonelistener" kind="Simple"/>
+            destinationClassName="com.android.benedict.rookie.StartTelecomInfoSrevice"
+            endpointName="starTelecomInfoSrevice" kind="Simple"/>
     </Class>
-    <Class name="com.android.benedict.rookie.AddNpNumberActivity"
-        x="428" y="199">
+    <Class name="com.android.benedict.rookie.StartTelecomInfoSrevice"
+        x="778" y="548">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.android.benedict.rookie.EditNpNumberActivity"
+        x="1207" y="314">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -113,7 +121,8 @@
             destinationClassName="com.android.benedict.rookie.TelecomInfo"
             endpointName="telecomInfo" kind="Simple"/>
     </Class>
-    <Class name="com.android.benedict.rookie.CustomCursorAdapter" x="85" y="228">
+    <Class name="com.android.benedict.rookie.CallLogCursorAdapter"
+        x="1209" y="38">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -122,7 +131,7 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.android.benedict.rookie.TelecomInfo" x="777" y="495">
+    <Class name="com.android.benedict.rookie.TelecomInfo" x="870" y="422">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -134,9 +143,7 @@
             destinationClassName="com.android.benedict.rookie.TelecomInfo.Payment"
             endpointName="mtelecomPaymentMap" kind="Simple"/>
     </Class>
-    <Class
-        name="com.android.benedict.rookie.CallLogCursorLoaderFragment"
-        x="88" y="27">
+    <Class name="com.android.benedict.rookie.CallLogFragment" x="1167" y="145">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -145,18 +152,7 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
         <Association
-            destinationClassName="com.android.benedict.rookie.CustomCursorAdapter"
+            destinationClassName="com.android.benedict.rookie.CallLogCursorAdapter"
             endpointName="mCustomCursorAdapter" kind="Simple"/>
-    </Class>
-    <Class name="com.android.benedict.rookie.TelecomPaymentCalculate"
-        x="732" y="619">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Communication destinationClassName="com.android.benedict.rookie.TelecomInfo"/>
     </Class>
 </ClassDiagram>

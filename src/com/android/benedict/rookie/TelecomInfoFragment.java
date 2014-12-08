@@ -66,11 +66,11 @@ public class TelecomInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        final View rootView = inflater.inflate(R.layout.telecom_spinner, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_telecom_info, container, false);
 
         telecomInfo = new TelecomInfo(this.getActivity());
         calendar = Calendar.getInstance();
-        setComponentView(rootView);
+        setupViewComponent(rootView);
 
         SharedPreferences queryDateStartPreferences = getActivity().getSharedPreferences(
                 QUERY_DATE_START, 0);
@@ -120,7 +120,7 @@ public class TelecomInfoFragment extends Fragment {
                 mTelecomPaymentSpinnerArray);
     }
 
-    private void setComponentView(View rootView) {
+    private void setupViewComponent(View rootView) {
         mTelecomCorporation = (TextView) rootView.findViewById(R.id.telecom_corporation);
         mTelecomPayment = (TextView) rootView.findViewById(R.id.telecom_payment);
         mTelecomIntraFree = (TextView) rootView.findViewById(R.id.telecom_intra_free);
@@ -215,9 +215,6 @@ public class TelecomInfoFragment extends Fragment {
             int startDay = queryDateStartPreferences.getInt(START_Day,
                     calendar.get(Calendar.DAY_OF_MONTH));
 
-            // mBtnToSelectDate.setText(Integer.toString(year) +
-            // Integer.toString(month) + Integer.toString(day));
-
             DatePickerDialog datePicDlg = new DatePickerDialog(getActivity(),
                     new DatePickerDialog.OnDateSetListener() {
                         @Override
@@ -253,9 +250,6 @@ public class TelecomInfoFragment extends Fragment {
         @Override
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
-
-            // mBtnToSelectDate.setText(Integer.toString(year) +
-            // Integer.toString(month) + Integer.toString(day));
             SharedPreferences queryDateEndPreferences = getActivity().getSharedPreferences(
                     QUERY_DATE_END, 0);
             int endYear = queryDateEndPreferences.getInt(END_YEAR, calendar.get(Calendar.YEAR));
