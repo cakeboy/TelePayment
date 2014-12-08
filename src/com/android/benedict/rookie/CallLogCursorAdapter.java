@@ -17,18 +17,13 @@ public class CallLogCursorAdapter extends SimpleCursorAdapter {
 
     String[] mOriginalFrom;
 
-    // private Object setViewText;
-
     public CallLogCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to,
             int flags) {
         super(context, layout, c, from, to, flags);
-        // mTo = to;
         mOriginalFrom = from;
         // TODO Auto-generated constructor stub
     }
 
-    // @SuppressLint("SimpleDateFormat")
-    // @Override
     @SuppressLint("SimpleDateFormat")
     public void bindView(View view, Context context, Cursor cursor) {
         // TODO Auto-generated method stub
@@ -52,5 +47,4 @@ public class CallLogCursorAdapter extends SimpleCursorAdapter {
 
         setViewText((TextView) vDate, dateString);
     }
-
 }

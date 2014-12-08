@@ -24,6 +24,7 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
     private CallLogCursorAdapter mCustomCursorAdapter;
     private String[] callLogType = new String[1];
     private static String CALL_TYPE;
+
     public static CallLogFragment newInstance(int callType) {
         CallLogFragment fragment = new CallLogFragment();
         Bundle args = new Bundle();
@@ -36,7 +37,6 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        // getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
     @Override
@@ -67,10 +67,6 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
                 return new CursorLoader(getActivity(), CallLog.Calls.CONTENT_URI, null,
                         CallLog.Calls.TYPE + "= ?", callLogType, android.provider.CallLog.Calls._ID
                                 + " DESC");
-                // return new CursorLoader(getActivity(),
-                // CallLog.Calls.CONTENT_URI, null,
-                // null, null, android.provider.CallLog.Calls._ID
-                // + " DESC");
             default:
                 return null;
         }
@@ -87,11 +83,10 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
                 R.id.name, R.id.mobile, R.id.date
         };
 
-        mCustomCursorAdapter = new CallLogCursorAdapter(getActivity(), R.layout.call_log_adapter, cursor,
-                from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        mCustomCursorAdapter = new CallLogCursorAdapter(getActivity(), R.layout.call_log_adapter,
+                cursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         setListAdapter(mCustomCursorAdapter);
         mCustomCursorAdapter.swapCursor(cursor);
-
     }
 
     @Override
@@ -105,7 +100,5 @@ public class CallLogFragment extends ListFragment implements LoaderManager.Loade
         // TODO Auto-generated method stub
         getLoaderManager().initLoader(CALL_LOG_LOADER, null, this);
         return inflater.inflate(R.layout.callog_fragment, container, false);
-
     }
-
 }

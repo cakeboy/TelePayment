@@ -9,15 +9,10 @@ import android.util.Log;
 
 public class PhoneStateReciever extends BroadcastReceiver {
 
-    StarTelecomInfoSrevice starTelecomInfoSrevice;
+    StartTelecomInfoSrevice startTelecomInfoSrevice;
 
-    public static final String MY_START_SERVICE = "StarTelecomInfoSrevice.Start";
+    public static final String MY_START_SERVICE = "StartTelecomInfoSrevice.Start";
 
-    /*
-     * (non-Javadoc)
-     * @see android.content.BroadcastReceiver#onReceive(android.content.Context,
-     * android.content.Intent)
-     */
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -29,7 +24,7 @@ public class PhoneStateReciever extends BroadcastReceiver {
                 && !intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(
                         intent.getStringExtra(TelephonyManager.EXTRA_STATE_RINGING))) {
 
-            Intent it = new Intent(context, StarTelecomInfoSrevice.class);
+            Intent it = new Intent(context, StartTelecomInfoSrevice.class);
             it.setAction(MY_START_SERVICE);
             context.startService(it);
         }
@@ -37,5 +32,4 @@ public class PhoneStateReciever extends BroadcastReceiver {
         Log.d("abc",
                 "TelephonyManager Stat2 = " + intent.getStringExtra(TelephonyManager.EXTRA_STATE));
     }
-
 }

@@ -89,7 +89,7 @@ public class StartTelecomInfoSrevice extends Service {
         if (intent == null) {
             return super.onStartCommand(intent, flags, startId);
         }
-        if (intent.getAction().equals("StarTelecomInfoSrevice.Start")) {
+        if (intent.getAction().equals(PhoneStateReciever.MY_START_SERVICE)) {
             handler.postDelayed(runnable, 500);
         }
         return super.onStartCommand(intent, flags, startId);

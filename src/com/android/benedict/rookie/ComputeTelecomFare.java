@@ -24,7 +24,8 @@ public class ComputeTelecomFare {
     private float mExtraPayRemain;
     private float mLocalPayRemain;
     private static final String INTRA_NETWORK = "IntraNetwork";
-    private static final String OTHER = "Others";
+    private static final String EXTRA_NETWORK = "ExtraNetwork";
+    private static final String HOTLINE = "Hotline";
     private static final String FREE_CALL = "FreeCall";
     private static final String QUERY_DATE_START = "queryDateStart";
     private static final String QUERY_DATE_END = "queryDateEnd";
@@ -100,9 +101,6 @@ public class ComputeTelecomFare {
         Cursor cursor = mResolver.query(CallLog.Calls.CONTENT_URI, null,
                 android.provider.CallLog.Calls.DATE + " BETWEEN ? AND ?", whereValue,
                 android.provider.CallLog.Calls.DEFAULT_SORT_ORDER);
-        // Cursor cursor = mContRes.query(CallLog.Calls.CONTENT_URI, null,
-        // null, null,
-        // android.provider.CallLog.Calls._ID + " DESC");
         if (cursor == null)
             return;
 
@@ -117,7 +115,7 @@ public class ComputeTelecomFare {
 
                 String npNumType = mNpNumMap.get(queryNumber);
 
-                if (null != npNumType && npNumType.equals(OTHER))
+                if (null != npNumType && npNumType.equals(HOTLINE))
                     continue;
 
                 if (null != npNumType) {
@@ -126,7 +124,7 @@ public class ComputeTelecomFare {
                         if (intraDuration > intraFree) {
                             mIntraPay = (intraDuration - intraFree) * overIntraFree;
                         }
-                    } else {
+                    } else if(npNumType.equals(EXTRA_NETWORK)){
                         extraDuration += duration;
                         if (extraDuration > extraFree) {
                             mOutraPay = (extraDuration - extraFree) * overExtraFree;
