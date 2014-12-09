@@ -9,6 +9,8 @@ public class NpPhoneNumberDbHelper extends SQLiteOpenHelper {
 
     public String sCreatetableCommand;
     public static final String DATABASE_NAME = "npNum.db";
+    public static final String CACHED_NAME = "name";
+    public static final String CACHED_CORPORATION = "corporation";
     private final static int VERSION = 1;
 
     public NpPhoneNumberDbHelper(Context context) {

@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.provider.CallLog;
 import android.util.Log;
 
-public class ComputeTelecomFare {
+public class TelecomFareComputation {
 
     private static ContentResolver mResolver;
     private Map<String, String> mNpNumMap;
@@ -36,7 +36,7 @@ public class ComputeTelecomFare {
     private static final String END_MONTH = "endmonth";
     private static final String END_DAY = "endday";
 
-    public ComputeTelecomFare(TelecomInfo telecomInfo, int position,
+    public TelecomFareComputation(TelecomInfo telecomInfo, int position,
             TelecomInfoFragment telecomInfoFragment) {
 
         Calendar calendar = Calendar.getInstance();

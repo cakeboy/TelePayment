@@ -60,7 +60,7 @@ public class TelecomInfoFragment extends Fragment {
     private static final String END_DAY = "endday";
 
     TelecomInfo telecomInfo;
-    ComputeTelecomFare telecomPaymentCalculate;
+    TelecomFareComputation telecomPaymentCalculate;
     Calendar calendar;
 
     @Override
@@ -151,7 +151,7 @@ public class TelecomInfoFragment extends Fragment {
     }
 
     private void setViewText(int position) {
-        telecomPaymentCalculate = new ComputeTelecomFare(telecomInfo, position,
+        telecomPaymentCalculate = new TelecomFareComputation(telecomInfo, position,
                 TelecomInfoFragment.this);
 
         mTelecomCorporation.setText(telecomInfo.getCorporation(position));
